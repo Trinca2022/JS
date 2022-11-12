@@ -24,7 +24,18 @@ let saludoFinal = "Gracias por tu compra, ¡hasta la próxima!"
 let respuestaCompra = prompt("Bienvenido/a " + mensaje + "\n¿Querés comprar café?\n(1)- Si\n(2)- No")
 if (respuestaCompra == 1) {
 
-    let quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
+
+    let quiereComprar = 0;
+
+    quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
+
+    while (quiereComprar < 1 || quiereComprar > 3) {
+
+        alert("Volvé a Elegir 1, 2 o 3")
+        quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
+
+
+    }
     switch (quiereComprar) {
         case 1:
             let kilosColombiano = Number(prompt(`Elegiste el Café ${cafeColombiano.nombre} que tiene una intensidad ${cafeColombiano.intensidad} y cuesta $${cafeColombiano.precio} el Kilo \n \n¿Cuántos Kilos querés comprar?`))
@@ -61,10 +72,6 @@ if (respuestaCompra == 1) {
     }
 
 }
-
-
-
-
 
 
 
