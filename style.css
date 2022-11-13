@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+* {
+    font-family: Comspot;
+    margin: 0;
+    padding: 0;
+}
+
+.body-container-index,
+.body-container-paginas {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.body-container-index .row-body,
+.body-container-paginas .row-body {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.body-container-index .row-body .col-body,
+.body-container-paginas .row-body .col-body {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media screen and (max-width: 991px) {
+    .body-container-paginas {
+        padding-top: 3.5rem !important;
+    }
+}
+
+/*HEADER*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-nav {
+    padding-right: 6px;
+}
+
+.container-button {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+
+/*APLICO NESTING Y SELECTOR &*/
+#navbarNav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+}
+
+#navbarNav ul li {
+    justify-content: space-evenly;
+    padding-left: 3px !important;
+    /*APLICO EXTEND*/
+}
+
+#navbarNav ul li a {
+    text-decoration: none;
+    padding: 2px 10px !important;
+    white-space: nowrap;
+}
+
+#navbarNav ul li a:hover {
+    text-decoration: none;
+    color: #29b972;
+    background-color: #3A3A3A;
+}
+
+.logo-superior {
+    width: 150px;
+    height: auto;
+    padding: 0 0 0 6px;
+    transition: all 0.5s ease-out;
+}
+
+.logo-superior:hover {
+    width: 160px;
+    height: auto;
+}
+
+@media screen and (max-width: 991px) {
+    li {
+        margin-top: 2%;
+    }
+
+    .header-paginas {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white;
+        opacity: 95%;
+    }
+}
+
+/*MAIN INDEX*/
+.main-inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+/*FOOTER*/
+.linkfooter a {
+    color: #29b972;
+}
+
+.derechos,
+.linkfooter {
+    text-align: center;
+    margin: 0;
+}
+
+.derechos {
+    padding-top: 0%;
+}
+
+.footer-der,
+.footer-izq,
+.footer-med {
+    padding: 0.5% 0 0 0;
+}
+
+.footer-der a {
+    margin: 2%;
+}
+
+.logos-redes {
+    width: 9%;
+    height: auto;
+    transition: all 0.5s ease-out;
+}
+
+.logos-redes:hover {
+    width: 12%;
+    height: auto;
+}
+
+@media screen and (max-width: 991px) {
+    .logos-redes {
+        width: 4%;
+    }
+}
