@@ -1,3 +1,4 @@
+// Defino constructor para las propiedades de los tipos de café
 class CreadordeCafe {
     constructor(id, nombre, intensidad, precio, kilo) {
         this.id = id;
@@ -12,10 +13,11 @@ let cafeColombiano = new CreadordeCafe(1111, "Colombiano", "Suave", 1200, 1);
 let cafeBrasilero = new CreadordeCafe(2222, "Brasilero", "Medio", 1000, 1);
 let cafeItaliano = new CreadordeCafe(3333, "Italiano", "Fuerte", 1500, 1);
 
+//Constantes
 const precioEnvio = 250
-
 const saludoFinal = "Gracias por tu compra, ¡hasta la próxima!"
 
+// Genero función que resume las operaciones al seleccionar tipo de café
 function preguntarKilos(creadoraDeCafe) {
     let kilos = Number(prompt(`Elegiste el Café ${creadoraDeCafe.nombre} que tiene una intensidad ${creadoraDeCafe.intensidad} y cuesta $${creadoraDeCafe.precio} el Kilo \n \n¿Cuántos Kilos querés comprar?`))
     let envio = Number(prompt("¿Lo querés con envío?\n(1)- Si\n(2)- No"))
@@ -26,7 +28,7 @@ function preguntarKilos(creadoraDeCafe) {
     alert(saludoFinal)
 }
 
-
+// Genero función ligada a HTML para comenzar a comprar haciendo click
 function compraCafe() {
     // Comienza a preguntar
     let mensaje = prompt('Hola, somos Café Don Julio, ¿cómo te llamás?')
@@ -50,8 +52,6 @@ function compraCafe() {
             alert("Volvé a elegir 1, 2 o 3")
             quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
         }
-
-
 
         switch (quiereComprar) {
 
