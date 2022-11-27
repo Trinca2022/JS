@@ -22,7 +22,7 @@ productosExistentes.push(cafeItaliano);
 
 //Constantes
 const precioEnvio = 250
-const saludoFinal = "Gracias por tu compra, ¡hasta la próxima!"
+const saludoFinal = "Graciasd, ¡hasta la próxima!"
 
 // Genero función que resume las operaciones al seleccionar tipo de café
 function preguntarKilos(creadoraDeCafe) {
