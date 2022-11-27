@@ -48,13 +48,12 @@ function compraCafe() {
         respuestaCompra = Number(prompt("Bienvenido/a " + mensaje + "\n¿Querés comprar café?\n(1)- Si\n(2)- No"))
     }
 
+    // Si la respuesta es correcta hace lo siguiente:
     if (respuestaCompra === 1) {
 
         let quiereComprar = 0;
 
         quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
-
-        const productoElegido = productosExistentes.find(producto => producto.id == quiereComprar)
 
         while (quiereComprar < 1 || quiereComprar > 3 || Number.isNaN(quiereComprar)) {
 
@@ -62,12 +61,16 @@ function compraCafe() {
             quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
         }
 
-        preguntarKilos(productoElegido)
+        const cafeSeleccionado = productosExistentes.find((cafe => cafe.id === quiereComprar))
 
-    }
+        if (quiereComprar === 1 || quiereComprar === 2 || quiereComprar === 3) {
 
-    else if (respuestaCompra === 2) { alert("Gracias por tu visita") }
-    else {
-        alert("Volvé a escribir tu respuesta")
+            preguntarKilos(cafeSeleccionado);
+
+        }
+
+        else {
+            alert("Gracias por tu visita")
+        }
     }
 }
