@@ -9,7 +9,7 @@
 .body-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 13fr 1fr;
+    grid-template-rows: 1fr 7fr 1fr;
     grid-template-areas:
         "header"
         "main"
@@ -58,21 +58,21 @@ li {
 
 
 ul a {
-    text-decoration: none;
-    color: white;
-    padding: 2px 10px;
-    border: 1px solid;
-    border-radius: 5px;
+    text-decoration: none !important;
+    color: white !important;
+    padding: 2px 10px !important;
+    border: 1px solid !important;
+    border-radius: 5px !important;
     background-color: black;
-    transition: all 0.5s ease-out;
-    cursor: pointer;
-    font-size: 150%;
+    transition: all 0.5s ease-out !important;
+    cursor: pointer !important;
+    font-size: 150% !important;
 }
 
 
 ul a:hover {
     text-decoration: none;
-    color: black;
+    color: black !important;
     border: 1px solid;
     border-radius: 5px;
     background-color: white;
