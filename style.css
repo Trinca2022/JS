@@ -7,9 +7,10 @@
 }
 
 .body-container {
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 7fr 1fr;
+    grid-template-rows: 1fr 12fr 1fr;
     grid-template-areas:
         "header"
         "main"
@@ -130,4 +131,18 @@ ul a:hover {
 @font-face {
     font-family: Comspot;
     src: url(./Fuentes/TYPEMATES\ -\ COMSPOT.OTF);
+}
+
+
+/*Productos*/
+.cardsContainer {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card {
+    height: 80% !important;
 }
