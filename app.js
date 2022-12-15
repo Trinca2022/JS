@@ -19,7 +19,7 @@ productosExistentes.push(cafeBrasilero);
 let cafeItaliano = new CreadordeCafe(3, "Italiano", "Fuerte", 1500, 1);
 productosExistentes.push(cafeItaliano);
 
-
+/*
 //Constantes
 const precioEnvio = 250
 const saludoFinal = "Gracias por tu compra, ¡hasta la próxima!"
@@ -74,3 +74,4 @@ function compraCafe() {
         }
     }
 }
+*/

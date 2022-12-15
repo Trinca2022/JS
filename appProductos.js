@@ -24,23 +24,35 @@ productosExistentes.push(cafeItaliano);
 // Constanste lista de productos de html
 
 
+let carritoDeProductos = []
 
-const listaProductos = document.getElementById("casa")
+
+const listaProductos = document.getElementById("listaProductos");
 
 
+//const mostrarProductos = () => {
 productosExistentes.forEach(productoArray => {
-
-    listaProductos.innerHTML += `
-    <div class="card" style="width: 15rem;">
+    const card = document.createElement("div");
+    card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
+    card.innerHTML = `
+            <div class="card" style="width: 15rem;">
             <img src="${productoArray.img}"
                 class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Café ${productoArray.nombre}</h5>
                 <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
-                <a href="#" class="btn btn-primary">Agregar al Carrito</a>
+                <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Agregar al Carrito</a>
             </div>
         </div>
         `
+    listaProductos.appendChild(card);
+
+    const boton = document.getElementById(`boton${productoArray.id}`);
+    boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id) })
+
+
 
 })
+
+//mostrarProductos();
 
