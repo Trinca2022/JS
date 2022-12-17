@@ -1,4 +1,7 @@
 // Defino constructor para las propiedades de los tipos de café
+
+
+
 class CreadordeCafe {
     constructor(id, nombre, intensidad, precio, kilo, img) {
         this.id = id;
@@ -25,6 +28,7 @@ productosExistentes.push(cafeItaliano);
 
 
 let carritoDeProductos = []
+
 
 
 const listaProductos = document.getElementById("listaProductos");
@@ -64,9 +68,16 @@ const agregarAlCarrito = (id) => {
         carritoDeProductos.push(productoAgregado)
     }
     console.log(carritoDeProductos)
+
+    localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
 }
 
 mostrarProductos();
+
+
+
+
+
 
 // Productos que aparecen en el carrito
 

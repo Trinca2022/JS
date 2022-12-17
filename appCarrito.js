@@ -1,6 +1,3 @@
-const pruebaLoca = document.getElementById("pruebaLoca")
+const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
 
-const prueba = document.createElement("h1")
-prueba.innerHTML = "hola"
-
-pruebaLoca.appendChild(prueba)
+console.log(carritoProductos)
