@@ -30,6 +30,10 @@ productosExistentes.push(cafeItaliano);
 let carritoDeProductos = []
 
 
+// Si el carrito ya tiene articulos en localStorage, los mantiene
+if (localStorage.getItem('carrito') !== null) {
+    carritoDeProductos = JSON.parse(localStorage.getItem("carrito"))
+}
 
 const listaProductos = document.getElementById("listaProductos");
 
@@ -59,16 +63,24 @@ const mostrarProductos = () => {
     })
 }
 
+
+//Agrega al carrito cuyo id es igual a id
 const agregarAlCarrito = (id) => {
-    const productoListo = carritoDeProductos.find(productoArray => productoArray.id === id)
+    //Busca en el el carrito un producto cuyo id es igual al parámetro id. Si lo encuentra, lo guarda en productoListo
+    const productoListo = carritoDeProductos.find(producto => producto.id === id)
+    // si productoListo existe
     if (productoListo) {
+        //agrega al producto que encontré 1 kilo más
         productoListo.kilo++;
+        // no encontró el id del producto en el array: carritoDeProductos    
     } else {
-        productoAgregado = productosExistentes.find(productoArray => productoArray.id === id);
+        // busco dentro de los productos existentes el producto que tenga ese ID 
+        const productoAgregado = productosExistentes.find(producto => producto.id === id);
+        // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
         carritoDeProductos.push(productoAgregado)
     }
-    console.log(carritoDeProductos)
 
+    //Guarda en storage el producto
     localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
 }
 
