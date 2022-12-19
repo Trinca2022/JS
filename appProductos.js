@@ -56,7 +56,7 @@ const mostrarProductos = () => {
         listaProductos.appendChild(card);
 
         const boton = document.getElementById(`boton${productoArray.id}`);
-        boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id) })
+        boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
 
 
 
@@ -86,36 +86,12 @@ const agregarAlCarrito = (id) => {
 
 mostrarProductos();
 
-
-
-
-
-
-// Productos que aparecen en el carrito
-
-
-
-//const containerProductosDelCarrito = document.getElementById("containerProductosDelCarrito")
-
-/*const pruebaLoca = document.getElementById("pruebaLoca")
-
-const prueba = document.createElement("h1")
-prueba.innerHTML = "hola"
-
-pruebaLoca.appendChild(prueba)
-
-/*
-const productosDelCarrito = () => {
-    carritoDeProductos.forEach(productoArray => {
-        const articuloCarrito = document.createElement("li");
-        articuloCarrito.classList.add("list-group-item d-flex justify-content-between align-items-center");
-        articuloCarrito.innerHTML = `
-            Café ${productoArray.nombre}
-
-        `
+const totalCompra = () => {
+    let importeDeCompra = 0;
+    carritoDeProductos.forEach(producto => {
+        importeDeCompra += producto.precio * producto.kilo;
     })
-    containerProductosDelCarrito.appendChild(articuloCarrito);
+    localStorage.setItem("precioTotal", importeDeCompra)
 }
 
-productosDelCarrito();
-*/
+totalCompra()

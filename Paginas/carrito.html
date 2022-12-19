@@ -55,23 +55,31 @@
     </header>
 
     <!--Termina cabecera/comienza cuerpo-->
-    <div>
+    <div class="mainContainerCarrito">
         <div id="carritoVacio">
 
         </div>
-        <ol class="list-group list-group-numbered" id="containerProductosDelCarrito">
+        <div>
+            <ol class="list-group list-group" id="containerProductosDelCarrito">
 
 
 
-        </ol>
 
-        <button id="botonVaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+            </ol>
+        </div>
+        <div class="contenedorBotones">
+            <button id="botonVaciarCarrito" onclick="vaciarCarrito()" class="botones">Vaciar Carrito</button>
+            <button id="botonSeguirComprando" onclick="location.href=`./productos.html`" class="botones">Seguir
+                comprando</button>
+            <button id="botonFinalizarCompra" onclick="alert('¡Gracias por tu compra!')" class="botones">Finalizar
+                compra</button>
+        </div>
     </div>
 
     <!--Termina cuerpo/comienza pie-->
     <footer>
         <hr>
-        <p class="derechos">
+        <p class=" derechos">
             © 2022 CAFÉ DON JULIO S.A., todos los derechos reservados.
         </p>
     </footer>
