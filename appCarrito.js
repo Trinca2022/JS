@@ -1,7 +1,5 @@
 const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
 
-
-
 const carritoVacio = document.getElementById('carritoVacio')
 
 const containerProductosDelCarrito = document.getElementById('containerProductosDelCarrito')
@@ -30,7 +28,7 @@ const renderizarCarrito = () => {
       divItemCarrito.classList.add('ms-2', 'me-auto')
       //creo una div que va a contener el titulo del carrito
       const nombreProducto = document.createElement('div')
-      nombreProducto.classList.add('fw-bold')
+      nombreProducto.classList.add('fw-bold', 'divProductoCarrito')
       nombreProducto.innerText = `Café ${carritoProducto.nombre} - Cantidad: ${carritoProducto.kilo} - Precio: $${carritoProducto.kilo * carritoProducto.precio}`
 
 
@@ -58,7 +56,7 @@ renderizarCarrito();
 
 
 
-
+//Vacía carrito del storage y elimina los productos mostrados
 const vaciarCarrito = () => {
   localStorage.removeItem('carrito');
 
@@ -66,34 +64,12 @@ const vaciarCarrito = () => {
 
   renderizarCarrito()
 
-
 }
 
 
-
-/*
-
-<li class="list-group-item d-flex justify-content-between align-items-start">
-  <div class="ms-2 me-auto">
-    <div class="fw-bold">Subheading</div>
-    Content for list item
-  </div>
-  <span class="badge bg-primary rounded-pill">14</span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
-  <div class="ms-2 me-auto">
-    <div class="fw-bold">Subheading</div>
-    Content for list item
-  </div>
-  <span class="badge bg-primary rounded-pill">14</span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-start">
-  <div class="ms-2 me-auto">
-    <div class="fw-bold">Subheading</div>
-    Content for list item
-  </div>
-  <span class="badge bg-primary rounded-pill">14</span>
-</li>
-</ol>}
-
-*/
+const botonFinalizar = document.getElementById(`botonFinalizarCompra`);
+botonFinalizar.addEventListener("click", () => {
+  alert('¡Gracias por tu compra!');
+  vaciarCarrito();
+  location.href = `../index.html`
+})
