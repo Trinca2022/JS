@@ -1,6 +1,4 @@
-// Defino constructor para las propiedades de los tipos de café
-
-
+/*// Defino constructor para las propiedades de los tipos de café
 
 class CreadordeCafe {
     constructor(id, nombre, intensidad, precio, kilo, img) {
@@ -23,8 +21,10 @@ let cafeBrasilero = new CreadordeCafe(2, "Brasilero", "Medio", 1000, 1, "https:/
 productosExistentes.push(cafeBrasilero);
 let cafeItaliano = new CreadordeCafe(3, "Italiano", "Fuerte", 1500, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
 productosExistentes.push(cafeItaliano);
+let cafePeruano = new CreadordeCafe(4, "Peruano", "Equilibrada", 1300, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
+productosExistentes.push(cafePeruano);
 
-// Constanste lista de productos de html
+// Constante lista de productos de html
 
 
 let carritoDeProductos = []
@@ -95,3 +95,4 @@ const totalCompra = () => {
 }
 
 totalCompra()
+*/

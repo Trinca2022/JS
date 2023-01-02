@@ -1,3 +1,10 @@
+//código para hacer que el boton ppal del index vaya para abajo
+//las cards del index tienen el botón comprar
+//el html del producto seleccionado tiene select de molienda y cantidad y dos botones "Añadir producto al carrito" y "Ver carrito"
+//Resumen del pedido + formulario
+//usar librerías
+//usar fetch para imágenes locales
+
 const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
 
 const carritoVacio = document.getElementById('carritoVacio')

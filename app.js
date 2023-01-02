@@ -1,77 +1,97 @@
 // Defino constructor para las propiedades de los tipos de café
+
 class CreadordeCafe {
-    constructor(id, nombre, intensidad, precio, kilo) {
+    constructor(id, nombre, intensidad, precio, kilo, img) {
         this.id = id;
         this.nombre = nombre;
         this.intensidad = intensidad;
         this.precio = precio;
         this.kilo = kilo
+        this.img = img
     }
 }
+
 
 //Genero array de productos
 const productosExistentes = [];
 
-let cafeColombiano = new CreadordeCafe(1, "Colombiano", "Suave", 1200, 1);
+let cafeColombiano = new CreadordeCafe(1, "Colombiano", "Suave", 1200, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
 productosExistentes.push(cafeColombiano);
-let cafeBrasilero = new CreadordeCafe(2, "Brasilero", "Medio", 1000, 1);
+let cafeBrasilero = new CreadordeCafe(2, "Brasilero", "Medio", 1000, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
 productosExistentes.push(cafeBrasilero);
-let cafeItaliano = new CreadordeCafe(3, "Italiano", "Fuerte", 1500, 1);
+let cafeItaliano = new CreadordeCafe(3, "Italiano", "Fuerte", 1500, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
 productosExistentes.push(cafeItaliano);
+let cafePeruano = new CreadordeCafe(4, "Peruano", "Equilibrada", 1300, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
+productosExistentes.push(cafePeruano);
 
-/*
-//Constantes
-const precioEnvio = 250
-const saludoFinal = "Gracias por tu compra, ¡hasta la próxima!"
+// Constante lista de productos de html
 
-// Genero función que resume las operaciones al seleccionar tipo de café
-function preguntarKilos(creadoraDeCafe) {
-    let kilos = Number(prompt(`Elegiste el Café ${creadoraDeCafe.nombre} que tiene una intensidad ${creadoraDeCafe.intensidad} y cuesta $${creadoraDeCafe.precio} el Kilo \n \n¿Cuántos Kilos querés comprar?`))
-    let envio = Number(prompt("¿Lo querés con envío?\n El costo del envío es de $250\n(1)- Si\n(2)- No"))
 
-    if (envio == 1) { alert("El precio final de tu compra es de $" + (creadoraDeCafe.precio * kilos + precioEnvio)) }
-    else { alert("El precio final de tu compra es de $" + creadoraDeCafe.precio * kilos) }
+let carritoDeProductos = []
 
-    alert(saludoFinal)
+
+// Si el carrito ya tiene articulos en localStorage, los mantiene
+if (localStorage.getItem('carrito') !== null) {
+    carritoDeProductos = JSON.parse(localStorage.getItem("carrito"))
 }
 
-// Genero función ligada a HTML para comenzar a comprar haciendo click
-function compraCafe() {
-    // Comienza a preguntar
-    let mensaje = prompt('Hola, somos Café Don Julio, ¿cómo te llamás?')
+const listaProductos = document.getElementById("listaProductosIndex");
 
-    let respuestaCompra = Number(prompt("Bienvenido/a " + mensaje + "\n¿Querés comprar café?\n(1)- Si\n(2)- No"))
 
-    // Continua preguntando si la respuesta no es correcta
-    while (respuestaCompra < 1 || respuestaCompra > 2 || Number.isNaN(respuestaCompra)) {
-        alert("Volvé a elegir 1 o 2")
-        respuestaCompra = Number(prompt("Bienvenido/a " + mensaje + "\n¿Querés comprar café?\n(1)- Si\n(2)- No"))
-    }
+const mostrarProductos = () => {
+    productosExistentes.forEach(productoArray => {
+        const card = document.createElement("div");
+        card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
+        card.innerHTML = `
+            <div class="card" style="width: 15rem;">
+            <img src="${productoArray.img}"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Café ${productoArray.nombre}</h5>
+                <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
+                <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Agregar al Carrito</a>
+            </div>
+        </div>
+        `
+        listaProductos.appendChild(card);
 
-    // Si la respuesta es correcta hace lo siguiente:
-    if (respuestaCompra === 1) {
+        const boton = document.getElementById(`boton${productoArray.id}`);
+        boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
 
-        let quiereComprar = 0;
 
-        quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
 
-        while (quiereComprar < 1 || quiereComprar > 3 || Number.isNaN(quiereComprar)) {
-
-            alert("Volvé a elegir 1, 2 o 3")
-            quiereComprar = Number(prompt("¿Qué café te interesa comprar?\n(1)- Café Colombiano\n(2)- Café Brasilero\n(3)- Café Italiano"))
-        }
-
-        const cafeSeleccionado = productosExistentes.find((cafe => cafe.id === quiereComprar))
-
-        if (quiereComprar === 1 || quiereComprar === 2 || quiereComprar === 3) {
-
-            preguntarKilos(cafeSeleccionado);
-
-        }
-
-        else {
-            alert("Gracias por tu visita")
-        }
-    }
+    })
 }
-*/
+
+
+//Agrega al carrito cuyo id es igual a id
+const agregarAlCarrito = (id) => {
+    //Busca en el el carrito un producto cuyo id es igual al parámetro id. Si lo encuentra, lo guarda en productoListo
+    const productoListo = carritoDeProductos.find(producto => producto.id === id)
+    // si productoListo existe
+    if (productoListo) {
+        //agrega al producto que encontré 1 kilo más
+        productoListo.kilo++;
+        // no encontró el id del producto en el array: carritoDeProductos    
+    } else {
+        // busco dentro de los productos existentes el producto que tenga ese ID 
+        const productoAgregado = productosExistentes.find(producto => producto.id === id);
+        // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
+        carritoDeProductos.push(productoAgregado)
+    }
+
+    //Guarda en storage el producto
+    localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
+}
+
+mostrarProductos();
+
+const totalCompra = () => {
+    let importeDeCompra = 0;
+    carritoDeProductos.forEach(producto => {
+        importeDeCompra += producto.precio * producto.kilo;
+    })
+    localStorage.setItem("precioTotal", importeDeCompra)
+}
+
+totalCompra()
