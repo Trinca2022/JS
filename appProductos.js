@@ -1,3 +1,17 @@
+const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*// Defino constructor para las propiedades de los tipos de café
 
 class CreadordeCafe {

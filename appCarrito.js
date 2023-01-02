@@ -1,5 +1,5 @@
-//código para hacer que el boton ppal del index vaya para abajo
-//las cards del index tienen el botón comprar
+//código para hacer que el boton ppal del index vaya para abajo - ok
+//las cards del index tienen el botón comprar - ok
 //el html del producto seleccionado tiene select de molienda y cantidad y dos botones "Añadir producto al carrito" y "Ver carrito"
 //Resumen del pedido + formulario
 //usar librerías

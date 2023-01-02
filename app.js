@@ -49,7 +49,7 @@ const mostrarProductos = () => {
             <div class="card-body">
                 <h5 class="card-title">Café ${productoArray.nombre}</h5>
                 <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
-                <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Agregar al Carrito</a>
+                <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Comprar</a>
             </div>
         </div>
         `
