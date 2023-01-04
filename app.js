@@ -49,11 +49,22 @@ const mostrarProductos = () => {
             <div class="card-body">
                 <h5 class="card-title">Café ${productoArray.nombre}</h5>
                 <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
+                <div style="width:130px">
+                    <div class="input-group quantity">
+                    <button type="button" class="btn btn-outline-secondary btn-sm minus">-<i class="fa fa-minus"></i></button>
+                    <input id="frm-cantidad cantidad${productoArray.id}" class="text-end form-control" type="number" required="required" min="1" max="198" name="cantidad">
+                    <button type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
                 <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Comprar</a>
             </div>
-        </div>
+            </div>
         `
         listaProductos.appendChild(card);
+
+
+
+
 
         const boton = document.getElementById(`boton${productoArray.id}`);
         boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
