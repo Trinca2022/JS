@@ -51,9 +51,9 @@ const mostrarProductos = () => {
                 <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
                 <div style="width:130px">
                     <div class="input-group quantity">
-                    <button type="button" class="btn btn-outline-secondary btn-sm minus">-<i class="fa fa-minus"></i></button>
-                    <input id="frm-cantidad cantidad${productoArray.id}" class="text-end form-control" type="number" required="required" min="1" max="198" name="cantidad">
-                    <button type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
+                    <button id= "botonResta${productoArray.id}" type="button" class="btn btn-outline-secondary btn-sm minus">-<i class="fa fa-minus"></i></button>
+                    <input id="frm-cantidad" class="text-end form-control" type="number" required="required" min="1" max="198" name="cantidad">
+                    <button id= "botonSuma${productoArray.id}" type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
                     </div>
                 </div>
                 <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Comprar</a>
@@ -62,17 +62,30 @@ const mostrarProductos = () => {
         `
         listaProductos.appendChild(card);
 
+        //const cantidadInput = document.getElementById(`cantidad${productoArray.id}`);
+        const botonSumar = document.getElementById(`botonSuma${productoArray.id}`);
+        botonSumar.addEventListener("click", (id) => {
+            const productoSumado = carritoDeProductos.find(producto => producto.id === id)
+            if (productoSumado) {
+                productoSumado.kilo++;
+            }
+        });
 
-
-
+        const botonRestar = document.getElementById(`botonResta${productoArray.id}`);
+        botonRestar.addEventListener("click", (id) => {
+            const productoRestado = carritoDeProductos.find(producto => producto.id === id)
+            if (productoRestado) {
+                productoRestado.kilo--;
+            }
+        })
 
         const boton = document.getElementById(`boton${productoArray.id}`);
         boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
 
 
-
     })
 }
+
 
 
 //Agrega al carrito cuyo id es igual a id
@@ -81,8 +94,10 @@ const agregarAlCarrito = (id) => {
     const productoListo = carritoDeProductos.find(producto => producto.id === id)
     // si productoListo existe
     if (productoListo) {
+        localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
         //agrega al producto que encontré 1 kilo más
-        productoListo.kilo++;
+        //productoListo.kilo = cantidadInput.value;
+        //productoListo.kilo++;
         // no encontró el id del producto en el array: carritoDeProductos    
     } else {
         // busco dentro de los productos existentes el producto que tenga ese ID 
