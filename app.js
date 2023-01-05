@@ -62,29 +62,42 @@ const mostrarProductos = () => {
         `
         listaProductos.appendChild(card);
 
-        //const cantidadInput = document.getElementById(`cantidad${productoArray.id}`);
+        //const cantidadInput = document.getElementById(`cantidad${productoArray.id}`); ESTO NO SALIÓ PORQUE PIDE USAR LA CONST
+
+        /*//Genero evento para botón +
         const botonSumar = document.getElementById(`botonSuma${productoArray.id}`);
-        botonSumar.addEventListener("click", (id) => {
-            const productoSumado = carritoDeProductos.find(producto => producto.id === id)
-            if (productoSumado) {
-                productoSumado.kilo++;
-            }
+        botonSumar.addEventListener("click", () => {
+            sumoCarrito(productoArray.id);
         });
 
+                //Genero evento para botón -
         const botonRestar = document.getElementById(`botonResta${productoArray.id}`);
-        botonRestar.addEventListener("click", (id) => {
-            const productoRestado = carritoDeProductos.find(producto => producto.id === id)
-            if (productoRestado) {
-                productoRestado.kilo--;
-            }
-        })
+        botonRestar.addEventListener("click", () => {
+            restoCarrito(productoArray.id);
+        })*/
 
+        //Genero evento para botón comprar
         const boton = document.getElementById(`boton${productoArray.id}`);
         boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
 
 
     })
 }
+
+/*//EJECUTO LO MISMO QUE agregarAlCarrito pero con los botones + y -
+const sumoCarrito = (id) => {
+const productoSumado = carritoDeProductos.find(producto => producto.id === id)
+            if (productoSumado) {
+                productoSumado.kilo++;
+            }
+}
+
+const restoCarrito = (id) => {
+const productoRestado = carritoDeProductos.find(producto => producto.id === id)
+            if (productoRestado) {
+                productoRestado.kilo--;
+            }
+}*/
 
 
 
@@ -94,10 +107,10 @@ const agregarAlCarrito = (id) => {
     const productoListo = carritoDeProductos.find(producto => producto.id === id)
     // si productoListo existe
     if (productoListo) {
-        localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
+        //localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
         //agrega al producto que encontré 1 kilo más
         //productoListo.kilo = cantidadInput.value;
-        //productoListo.kilo++;
+        productoListo.kilo++;
         // no encontró el id del producto en el array: carritoDeProductos    
     } else {
         // busco dentro de los productos existentes el producto que tenga ese ID 
