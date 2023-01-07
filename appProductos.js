@@ -1,4 +1,4 @@
-const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
+//const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
 
 
 

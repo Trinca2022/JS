@@ -5,7 +5,7 @@
         "intensidad": "suave",
         "precio": "1200",
         "kilo": "1",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU"
+        "img": "../Imagenes/Colombiano.jpg"
     },
     {
         "id": "2",
@@ -13,15 +13,15 @@
         "intensidad": "media",
         "precio": "1000",
         "kilo": "1",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU"
+        "img": "../Imagenes/Brasilero.jpg"
     },
     {
         "id": "3",
         "nombre": "Italiano",
-        "intensidad": "intensa",
+        "intensidad": "fuerte",
         "precio": "1500",
         "kilo": "1",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU"
+        "img": "../Imagenes/Italiano.jpg"
     },
     {
         "id": "4",
@@ -29,6 +29,6 @@
         "intensidad": "equilibrada",
         "precio": "1300",
         "kilo": "1",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU"
+        "img": "../Imagenes/Peruano.jpg"
     }
 ]

@@ -1,5 +1,19 @@
-// Defino constructor para las propiedades de los tipos de café
+// Busco con fetch el json
 
+const consultarProductos = async () => {
+    const datos = await fetch('./Productos/productos.json')
+    const productosExistentes = await datos.json()
+    return productosExistentes
+}
+
+/*consultarProductos().then(productosExistentes => {
+    console.log(productosExistentes)
+})*/
+
+
+
+// Defino constructor para las propiedades de los tipos de café
+/*
 class CreadordeCafe {
     constructor(id, nombre, intensidad, precio, kilo, img) {
         this.id = id;
@@ -11,19 +25,19 @@ class CreadordeCafe {
     }
 }
 
-
+*/
 //Genero array de productos
-const productosExistentes = [];
 
-let cafeColombiano = new CreadordeCafe(1, "Colombiano", "Suave", 1200, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
+/*
+let cafeColombiano = new CreadordeCafe(1, "Colombiano", "suave", 1200, 1, "./Imagenes/Colombiano.jpg");
 productosExistentes.push(cafeColombiano);
-let cafeBrasilero = new CreadordeCafe(2, "Brasilero", "Medio", 1000, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
+let cafeBrasilero = new CreadordeCafe(2, "Brasilero", "media", 1000, 1, "./Imagenes/Brasilero.jpg");
 productosExistentes.push(cafeBrasilero);
-let cafeItaliano = new CreadordeCafe(3, "Italiano", "Fuerte", 1500, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
+let cafeItaliano = new CreadordeCafe(3, "Italiano", "fuerte", 1500, 1, "./Imagenes/Italiano.jpg");
 productosExistentes.push(cafeItaliano);
-let cafePeruano = new CreadordeCafe(4, "Peruano", "Equilibrada", 1300, 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCHmSNxRgqyJj5djkB4IJ7iJJL8jD02CQIBg&usqp=CAU");
+let cafePeruano = new CreadordeCafe(4, "Peruano", "equilibrada", 1300, 1, "./Imagenes/Peruano.jpg");
 productosExistentes.push(cafePeruano);
-
+*/
 // Constante lista de productos de html
 
 
@@ -39,10 +53,11 @@ const listaProductos = document.getElementById("listaProductosIndex");
 
 
 const mostrarProductos = () => {
-    productosExistentes.forEach(productoArray => {
-        const card = document.createElement("div");
-        card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
-        card.innerHTML = `
+    consultarProductos().then(productosExistentes => {
+        productosExistentes.forEach(productoArray => {
+            const card = document.createElement("div");
+            card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
+            card.innerHTML = `
             <div class="card" style="width: 15rem;">
             <img src="${productoArray.img}"
                 class="card-img-top" alt="...">
@@ -59,30 +74,33 @@ const mostrarProductos = () => {
                 <a href="#" class="btn btn-primary botonComprar" id="boton${productoArray.id}">Añadir al carrito</a>
             </div>
             </div>
-        `
-        listaProductos.appendChild(card);
-
-        //const cantidadInput = document.getElementById(`cantidad${productoArray.id}`); ESTO NO SALIÓ PORQUE PIDE USAR LA CONST
-
-        /*//Genero evento para botón +
-        const botonSumar = document.getElementById(`botonSuma${productoArray.id}`);
-        botonSumar.addEventListener("click", () => {
-            sumoCarrito(productoArray.id);
-        });
-
-                //Genero evento para botón -
-        const botonRestar = document.getElementById(`botonResta${productoArray.id}`);
-        botonRestar.addEventListener("click", () => {
-            restoCarrito(productoArray.id);
-        })*/
-
-        //Genero evento para botón comprar
-        const boton = document.getElementById(`boton${productoArray.id}`);
-        boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
+                             `
+            listaProductos.appendChild(card);
 
 
+            //const cantidadInput = document.getElementById(`cantidad${productoArray.id}`); ESTO NO SALIÓ PORQUE PIDE USAR LA CONST
+
+            /*//Genero evento para botón +
+            const botonSumar = document.getElementById(`botonSuma${productoArray.id}`);
+            botonSumar.addEventListener("click", () => {
+                sumoCarrito(productoArray.id);
+            });
+     
+                    //Genero evento para botón -
+            const botonRestar = document.getElementById(`botonResta${productoArray.id}`);
+            botonRestar.addEventListener("click", () => {
+                restoCarrito(productoArray.id);
+            })*/
+
+            //Genero evento para botón comprar
+            const boton = document.getElementById(`boton${productoArray.id}`);
+
+
+            boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id), totalCompra() })
+        })
     })
 }
+
 
 /*//EJECUTO LO MISMO QUE agregarAlCarrito pero con los botones + y -
 const sumoCarrito = (id) => {
@@ -114,14 +132,21 @@ const agregarAlCarrito = (id) => {
         // no encontró el id del producto en el array: carritoDeProductos    
     } else {
         // busco dentro de los productos existentes el producto que tenga ese ID 
+        //consultarProductos().then(productosExistentes => {
         const productoAgregado = productosExistentes.find(producto => producto.id === id);
+
+
         // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
         carritoDeProductos.push(productoAgregado)
+        //})
     }
+
 
     //Guarda en storage el producto
     localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
 }
+
+
 
 mostrarProductos();
 
@@ -133,4 +158,5 @@ const totalCompra = () => {
     localStorage.setItem("precioTotal", importeDeCompra)
 }
 
-totalCompra()
+totalCompra();
+
