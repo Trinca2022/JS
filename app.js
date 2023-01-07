@@ -56,7 +56,7 @@ const mostrarProductos = () => {
                     <button id= "botonSuma${productoArray.id}" type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary" id="boton${productoArray.id}">Comprar</a>
+                <a href="#" class="btn btn-primary botonComprar" id="boton${productoArray.id}">Añadir al carrito</a>
             </div>
             </div>
         `
