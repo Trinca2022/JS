@@ -53,24 +53,21 @@
 
     <!--Termina cabecera/comienza cuerpo-->
     <div class="mainContainerCarrito">
-        <div id="carritoVacio">
-
-        </div>
-        <div class="containerOl">
-            <ol class="list-group list-group" id="containerProductosDelCarrito">
-
-
-
-
-            </ol>
-        </div>
-        <div class="contenedorBotones">
-            <button id="botonVaciarCarrito" onclick="vaciarCarrito()" class="botones">Vaciar Carrito</button>
-            <button id="botonSeguirComprando" onclick="location.href=`../index.html`" class="botones">Seguir
-                comprando</button>
-            <button id="botonFinalizarCompra" onclick="botonFinalizar()" class="botones">Finalizar
-                compra</button>
-        </div>
+        <form>
+            <h1>CONTACTO</h1>
+            <label class="inline" for="nombre">Nombre y apellido</label>
+            <input id="nombre" type="text" />
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="text" />
+            <label for="mail">Mail</label>
+            <input id="mail" type="email" placeholder="ejemplo@gmail.com" />
+            <label for="comentario">Comentario</label>
+            <textarea id="comentario" placeholder="Ingrese mensaje" rows="5" cols="30"></textarea>
+            <div class="boton-enviar">
+                <button id="enviarContacto">ENVIAR</button>
+                <!--<input id="enviar-contacto" type="submit" value="Enviar" />-->
+            </div>
+        </form>
     </div>
 
     <!--Termina cuerpo/comienza pie-->
@@ -83,7 +80,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="../appCarrito.js"></script>
+    <script src="../appContacto.js"></script>
 
 </body>
 
