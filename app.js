@@ -6,6 +6,8 @@ const consultarProductos = async () => {
     return productosExistentes
 }
 
+//const productosExistentes = consultarProductos().then(prod => console.log(prod));
+
 /*consultarProductos().then(productosExistentes => {
     console.log(productosExistentes)
 })*/
@@ -53,6 +55,7 @@ const listaProductos = document.getElementById("listaProductosIndex");
 
 
 const mostrarProductos = () => {
+    //USO EL .THEN PARA PODER UTILIZAR EL ARRAY DE JSON
     consultarProductos().then(productosExistentes => {
         productosExistentes.forEach(productoArray => {
             const card = document.createElement("div");
@@ -135,14 +138,16 @@ const agregarAlCarrito = (id) => {
         productoListo.kilo++;
         // no encontró el id del producto en el array: carritoDeProductos    
     } else {
-        // busco dentro de los productos existentes el producto que tenga ese ID 
-        //consultarProductos().then(productosExistentes => {
-        const productoAgregado = productosExistentes.find(producto => producto.id === id);
+
+        //USO EL .THEN PARA PODER UTILIZAR EL ARRAY DE JSON
+        consultarProductos().then(productosExistentes => {
+            // busco dentro de los productos existentes el producto que tenga ese ID 
+            const productoAgregado = productosExistentes.find(producto => producto.id === id);
 
 
-        // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
-        carritoDeProductos.push(productoAgregado)
-        //})
+            // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
+            carritoDeProductos.push(productoAgregado)
+        })
     }
 
 
