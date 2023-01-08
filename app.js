@@ -8,7 +8,6 @@ const consultarProductos = async () => {
     return productosExistentes
 }
 
-
 async function main() {
     let productosExistentes = await consultarProductos()
 
@@ -28,28 +27,22 @@ async function main() {
     const mostrarProductos = () => {
 
 
-        productosExistentes.forEach(productoArray => {
+        productosExistentes.forEach(productoExistente => {
             const card = document.createElement("div");
             card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
             card.innerHTML = `
             <div class="card" style="width: 15rem;">
-            <img src="${productoArray.img}"
+            <img src="${productoExistente.img}"
                 class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Café ${productoArray.nombre}</h5>
-                <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
-                <span class="pull-left">
-                <button id="botonSuma${productoArray.id} "type="button" class="js-cart-quantity-btn cart-item-btn btn" onclick="LS.minusQuantity({{ item.id }}{% if not cart_page %}, true{% endif %})">
-                </button>
-                <span>
-                    <input type="number" name="quantity[{{ item.id }}]" data-item-id="{{ item.id }}"  class="js-cart-quantity-input cart-item-input form-control"/>
-                </span>
-                <span class="js-cart-input-spinner cart-item-spinner" style="display: none;">
-                </span>
-                <button id="botonResta${productoArray.id} type="button" class="js-cart-quantity-btn cart-item-btn btn" onclick="LS.plusQuantity({{ item.id }}{% if not cart_page %}, true{% endif %})">
-                </button>
-                </span>
-                <a href="#" class="btn btn-primary botonComprar" id="boton${productoArray.id}">Añadir al carrito</a>
+                <h5 class="card-title">Café ${productoExistente.nombre}</h5>
+                <p class="card-text">Este café tiene una intensidad ${productoExistente.intensidad} y cuesta $${productoExistente.precio} el Kilo </p>
+                <div class="suma-resta">
+                    <button class="boton-resta" id="botonRestar${productoExistente.id}">-</button>
+                    <input type="number" min="0" max="150" value="0" id="input${productoExistente.id}">
+                    <button class="boton-suma" id="botonSumar${productoExistente.id}">+</button>
+                </div>
+                <a class="btn btn-primary botonComprar" id="botonAgregar${productoExistente.id}">Añadir al carrito</a>
             </div>
             </div>
                              `
@@ -59,10 +52,27 @@ async function main() {
 
 
             //Genero evento para botón comprar
-            const boton = document.getElementById(`boton${productoArray.id}`);
+            const botonAgregar = document.getElementById(`botonAgregar${productoExistente.id}`);
+            const inputKilos = document.getElementById(`input${productoExistente.id}`)
 
-
-            boton.addEventListener("click", () => { agregarAlCarrito(productoArray.id) })
+            botonAgregar.addEventListener("click", () => { agregarAlCarrito(productoExistente.id, Number(inputKilos.value)) })
+        
+            const botonSumar = document.getElementById(`botonSumar${productoExistente.id}`)
+            const botonRestar = document.getElementById(`botonRestar${productoExistente.id}`)
+            
+            botonSumar.addEventListener("click", () => {
+                let valorInput = Number(inputKilos.value) 
+                valorInput++
+                inputKilos.value = Math.min(valorInput, 50).toString()
+            })
+        
+            botonRestar.addEventListener("click", () => {
+                let valorInput = Number(inputKilos.value) 
+                valorInput--
+                inputKilos.value = Math.max(0, valorInput).toString()
+            })
+        
+        
         })
 
     }
@@ -70,8 +80,8 @@ async function main() {
 
 
 
-    //Agrega al carrito cuyo id es igual a id
-    const agregarAlCarrito = (id) => {
+    //Agrega al carrito
+    const agregarAlCarrito = (id, cantidad) => {
         //Busca en el el carrito un producto cuyo id es igual al parámetro id. Si lo encuentra, lo guarda en productoListo
         const productoListo = carritoDeProductos.find(producto => producto.id === id)
         // si productoListo existe
@@ -79,7 +89,7 @@ async function main() {
             //localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
             //agrega al producto que encontré 1 kilo más
             //productoListo.kilo = cantidadInput.value;
-            productoListo.kilo++;
+            productoListo.kilo += cantidad;
             // no encontró el id del producto en el array: carritoDeProductos    
         } else {
 
@@ -87,7 +97,7 @@ async function main() {
             // busco dentro de los productos existentes el producto que tenga ese ID 
             const productoAgregado = productosExistentes.find(producto => producto.id === id);
 
-
+            productoAgregado.kilo = cantidad
             // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
             carritoDeProductos.push(productoAgregado)
 
@@ -104,18 +114,11 @@ async function main() {
         localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
     }
 
-
-
     mostrarProductos();
 
-    /*<div style="width:130px">
-                        <div class="input-group quantity">
-                        <button id= "botonResta${productoArray.id}" type="button" class="btn btn-outline-secondary btn-sm minus">-<i class="fa fa-minus"></i></button>
-                        <input id="frm-cantidad" class="text-end form-control" type="number" required="required" min="1" max="198" name="cantidad">
-                        <button id= "botonSuma${productoArray.id}" type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
-                        </div>
-                    </div>*/
 
 }
 
-main()
+main();
+
+

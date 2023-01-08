@@ -229,3 +229,8 @@ form {
 input {
     margin-bottom: 10px;
 }
+
+.suma-resta {
+    display: flex;
+    flex-direction: row;
+}
