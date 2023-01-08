@@ -5,6 +5,7 @@
 //usar librerías
 //usar fetch para imágenes locales
 
+
 const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
 
 const carritoVacio = document.getElementById('carritoVacio')

@@ -1,3 +1,11 @@
-const botonEnviar = document.getElementById('enviarContacto')
 
-botonEnviar.addEventListener("click", () => { alert("¡Gracias por tu mensaje!") });
+const botonEnviar = document.getElementById("enviarContacto")
+
+botonEnviar.addEventListener("click", () => {
+    Swal.fire({
+        text: '¡Tu mensaje ha sido enviado con éxito!',
+
+
+    })
+
+})
