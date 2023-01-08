@@ -55,24 +55,44 @@ async function main() {
             const botonAgregar = document.getElementById(`botonAgregar${productoExistente.id}`);
             const inputKilos = document.getElementById(`input${productoExistente.id}`)
 
-            botonAgregar.addEventListener("click", () => { agregarAlCarrito(productoExistente.id, Number(inputKilos.value)) })
-        
+            botonAgregar.addEventListener("click", () => {
+                agregarAlCarrito(productoExistente.id, Number(inputKilos.value));
+
+                Toastify({
+                    text: `Café ${productoExistente.nombre} añadido al carrito`,
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "bottom",
+                    stopOnFocus: true,
+                    style: {
+                        background: "white",
+                        color: "black"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+
+
+
+            })
+
             const botonSumar = document.getElementById(`botonSumar${productoExistente.id}`)
             const botonRestar = document.getElementById(`botonRestar${productoExistente.id}`)
-            
+
             botonSumar.addEventListener("click", () => {
-                let valorInput = Number(inputKilos.value) 
+                let valorInput = Number(inputKilos.value)
                 valorInput++
                 inputKilos.value = Math.min(valorInput, 50).toString()
             })
-        
+
             botonRestar.addEventListener("click", () => {
-                let valorInput = Number(inputKilos.value) 
+                let valorInput = Number(inputKilos.value)
                 valorInput--
                 inputKilos.value = Math.max(0, valorInput).toString()
             })
-        
-        
+
+
         })
 
     }
