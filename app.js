@@ -64,13 +64,17 @@ const mostrarProductos = () => {
             <div class="card-body">
                 <h5 class="card-title">Café ${productoArray.nombre}</h5>
                 <p class="card-text">Este café tiene una intensidad ${productoArray.intensidad} y cuesta $${productoArray.precio} el Kilo </p>
-                <div style="width:130px">
-                    <div class="input-group quantity">
-                    <button id= "botonResta${productoArray.id}" type="button" class="btn btn-outline-secondary btn-sm minus">-<i class="fa fa-minus"></i></button>
-                    <input id="frm-cantidad" class="text-end form-control" type="number" required="required" min="1" max="198" name="cantidad">
-                    <button id= "botonSuma${productoArray.id}" type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
-                    </div>
-                </div>
+                <span class="pull-left">
+                <button id="botonSuma${productoArray.id} "type="button" class="js-cart-quantity-btn cart-item-btn btn" onclick="LS.minusQuantity({{ item.id }}{% if not cart_page %}, true{% endif %})">
+                </button>
+                <span>
+                    <input type="number" name="quantity[{{ item.id }}]" data-item-id="{{ item.id }}"  class="js-cart-quantity-input cart-item-input form-control"/>
+                </span>
+                <span class="js-cart-input-spinner cart-item-spinner" style="display: none;">
+                </span>
+                <button id="botonResta${productoArray.id} type="button" class="js-cart-quantity-btn cart-item-btn btn" onclick="LS.plusQuantity({{ item.id }}{% if not cart_page %}, true{% endif %})">
+                </button>
+                </span>
                 <a href="#" class="btn btn-primary botonComprar" id="boton${productoArray.id}">Añadir al carrito</a>
             </div>
             </div>
@@ -155,8 +159,15 @@ const totalCompra = () => {
     carritoDeProductos.forEach(producto => {
         importeDeCompra += producto.precio * producto.kilo;
     })
-    localStorage.setItem("precioTotal", importeDeCompra)
+    localStorage.setItem("precioTotal", JSON.importeDeCompra)
 }
 
 totalCompra();
 
+/*<div style="width:130px">
+                    <div class="input-group quantity">
+                    <button id= "botonResta${productoArray.id}" type="button" class="btn btn-outline-secondary btn-sm minus">-<i class="fa fa-minus"></i></button>
+                    <input id="frm-cantidad" class="text-end form-control" type="number" required="required" min="1" max="198" name="cantidad">
+                    <button id= "botonSuma${productoArray.id}" type="button" class="btn btn-sm btn-outline-secondary plus">+<i class="fa fa-plus"></i></button>
+                    </div>
+                </div>*/
