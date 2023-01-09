@@ -234,3 +234,14 @@ input {
     display: flex;
     flex-direction: row;
 }
+
+.swal2-container .swal2-html-container {
+    position: top !important;
+
+}
+
+
+
+
+
+/*swal2-center swal2-backdrop-show swal2-html-container*/
