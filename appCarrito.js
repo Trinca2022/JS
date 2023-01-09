@@ -77,7 +77,12 @@ const vaciarCarrito = () => {
 
 const botonFinalizar = document.getElementById(`botonFinalizarCompra`);
 botonFinalizar.addEventListener("click", () => {
-  alert('¡Gracias por tu compra!');
+  Swal.fire({
+    title: '¡Gracias por tu compra!',
+    showConfirmButton: false,
+    timer: 1000
+  })
   vaciarCarrito();
-  location.href = `../index.html`
+  //location.href = `../index.html`
+
 })

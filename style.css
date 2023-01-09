@@ -10,6 +10,7 @@
 
 .body-container {
     height: 100vh !important;
+    /*width: 100vh !important;*/
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 12fr 1fr;
@@ -146,13 +147,14 @@ ul a:hover,
     justify-content: center;
     align-items: center;
     padding: 2%;
+    /*ACÁ AGREGO ALTURA PARA HACER QUE EL SWEET ALERT ME ENTRE Y NO SE ME VAYA TAN PARA ABAJO*/
+    height: 75vh !important;
+    /*width: 100vh !important;*/
 }
 
 .containerOl {
     width: 50%;
     font-size: 150% !important;
-
-
 }
 
 
@@ -175,7 +177,7 @@ ul a:hover,
     margin: 0;
     padding-top: 0%;
     color: black;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 @font-face {
@@ -216,7 +218,8 @@ form {
 }
 
 #enviarContacto {
-    margin: 5px 0;
+    margin: 5px 0px;
+    margin-left: 18%;
     font-size: 1.1rem;
     color: white;
     border-color: white;
@@ -235,13 +238,15 @@ input {
     flex-direction: row;
 }
 
-.swal2-container .swal2-html-container {
-    position: top !important;
-
-}
 
 
 
 
+/*
+.swual2-container {
 
-/*swal2-center swal2-backdrop-show swal2-html-container*/
+    display: flex !important;
+    height: 1vh !important;
+    width: 1vh !important;
+
+}*/
