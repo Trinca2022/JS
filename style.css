@@ -141,7 +141,7 @@ ul a:hover,
 
 /*ESTILO PARA CARRITO*/
 
-.mainContainerCarrito {
+.mainContainerPaginas {
     display: flex;
     flex-direction: column;
     justify-content: center;
