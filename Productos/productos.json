@@ -5,7 +5,7 @@
         "intensidad": "suave",
         "precio": "1200",
         "kilo": "1",
-        "img": "../Imagenes/Colombiano.jpg"
+        "img": "https://trinca2022.github.io/JS/Imagenes/Colombiano.jpg"
     },
     {
         "id": "2",
@@ -13,7 +13,7 @@
         "intensidad": "media",
         "precio": "1000",
         "kilo": "1",
-        "img": "../Imagenes/Brasilero.jpg"
+        "img": "https://trinca2022.github.io/JS/Imagenes/Brasilero.jpg"
     },
     {
         "id": "3",
@@ -21,7 +21,7 @@
         "intensidad": "fuerte",
         "precio": "1500",
         "kilo": "1",
-        "img": "../Imagenes/Italiano.jpg"
+        "img": "https://trinca2022.github.io/JS/Imagenes/Italiano.jpg"
     },
     {
         "id": "4",
@@ -29,6 +29,6 @@
         "intensidad": "equilibrada",
         "precio": "1300",
         "kilo": "1",
-        "img": "../Imagenes/Peruano.jpg"
+        "img": "https://trinca2022.github.io/JS/Imagenes/Peruano.jpg"
     }
 ]
