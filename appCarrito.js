@@ -1,10 +1,3 @@
-//código para hacer que el boton ppal del index vaya para abajo - ok
-//las cards del index tienen el botón comprar - ok
-//el html del producto seleccionado tiene select de molienda y cantidad y dos botones "Añadir producto al carrito" y "Ver carrito"
-//Resumen del pedido + formulario en carrito
-//usar librerías
-//usar fetch para imágenes locales
-
 
 const carritoProductos = JSON.parse(localStorage.getItem("carrito"))
 
@@ -14,16 +7,17 @@ const containerProductosDelCarrito = document.getElementById('containerProductos
 
 const importeTotal = JSON.parse(localStorage.getItem("precioTotal"))
 
+//CONTAINER LI !!!!!!!!
+//const divItemCarrito = document.getElementById('divItemCarrito')
+
+
+//Función que ejecuta un cartel de carrito vacío cuando no hay nada en el local storage, de lo contrario genera un HTML que resume la compra y muestra el total $
 const renderizarCarrito = () => {
 
   if (localStorage.getItem('carrito') === null) {
-
     const h1 = document.createElement('h1')
-
     h1.innerText = 'Tu carrito está vacío'
-
     carritoVacio.appendChild(h1)
-
   }
 
   else {
@@ -41,34 +35,56 @@ const renderizarCarrito = () => {
       <button id="botonEliminar${carritoProducto.id}">X</button>
       `
 
-
       divItemCarrito.appendChild(nombreProducto)
       itemEnCarrito.appendChild(divItemCarrito)
       containerProductosDelCarrito.appendChild(itemEnCarrito)
 
-    })
+      const botonEliminar = document.getElementById(`botonEliminar${carritoProducto.id}`);
+      botonEliminar.addEventListener("click", () => {
+        //eliminarProducto(carritoProducto.id);
+      })
 
-    /*const botonEliminar = document.getElementById(`botonEliminar${carritoProducto.id}`);
-    botonEliminar.addEventListener("click", () => {
-      eliminarProducto(carritoProducto.id);
-    })*/
+    })
 
     const importeAPagar = document.createElement('li')
     importeAPagar.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start')
     importeAPagar.innerHTML = `<div class="ms-2 me-auto">
     <div class="fw-bold">Importe Total: $${importeTotal}</div>
     `
-
     containerProductosDelCarrito.appendChild(importeAPagar)
 
 
-
-
   }
+
+
 }
 
 renderizarCarrito();
 
+
+/*
+//Elimina un producto específico del carrito
+const eliminarProducto = (id) => {
+  const productoEliminado = carritoProductos.find(producto => producto.id === id)
+  const indexBorrar = carritoProductos.indexOf(productoEliminado)
+  //console.log(indexBorrar)
+  carritoProductos.splice(indexBorrar, 1)
+  // console.log(carritoProductos)
+  localStorage.removeItem('carrito');
+  localStorage.setItem("carrito", JSON.stringify(carritoProductos));
+  console.log(carritoProductos)
+  //localStorage.removeItem('precioTotal');
+
+  let importeDeCompra = 0;
+  carritoProductos.forEach(producto => {
+    importeDeCompra += producto.precio * producto.kilo;
+  })
+  localStorage.setItem("precioTotal", JSON.stringify(importeDeCompra))
+
+  //Guarda en storage el producto
+  //localStorage.setItem("carrito", JSON.stringify(carritoProductos));
+  // JSON.parse(localStorage.getItem("precioTotal"))
+}*/
 
 
 //Vacía carrito del storage y elimina los productos mostrados
@@ -77,7 +93,7 @@ const vaciarCarrito = () => {
 
   containerProductosDelCarrito.parentElement.removeChild(containerProductosDelCarrito);
 
-  renderizarCarrito()
+  renderizarCarrito();
 
 }
 

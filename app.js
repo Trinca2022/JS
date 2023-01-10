@@ -51,19 +51,17 @@ async function main() {
 
 
 
-            //Genero evento para botón comprar
+            //Genero evento para botón AGREGAR AL CARRITO
             const botonAgregar = document.getElementById(`botonAgregar${productoExistente.id}`);
             const inputKilos = document.getElementById(`input${productoExistente.id}`)
 
             botonAgregar.addEventListener("click", () => {
                 agregarAlCarrito(productoExistente.id, Number(inputKilos.value));
 
+                //APLICO LIBRERÍA
                 Toastify({
                     text: `Café ${productoExistente.nombre} añadido al carrito`,
                     duration: 3000,
-                    destination: "https://github.com/apvarun/toastify-js",
-                    newWindow: true,
-                    close: true,
                     gravity: "bottom",
                     stopOnFocus: true,
                     style: {
@@ -72,11 +70,9 @@ async function main() {
                     },
                     onClick: function () { } // Callback after click
                 }).showToast();
-
-
-
             })
 
+            //TRAIGO DEL DOM LOS BOTONES DEL INPUT
             const botonSumar = document.getElementById(`botonSumar${productoExistente.id}`)
             const botonRestar = document.getElementById(`botonRestar${productoExistente.id}`)
 
