@@ -39,7 +39,7 @@ async function main() {
                 <p class="card-text">Este café tiene una intensidad ${productoExistente.intensidad} y cuesta $${productoExistente.precio} el Kilo </p>
                 <div class="suma-resta">
                     <button class="boton-resta" id="botonRestar${productoExistente.id}">-</button>
-                    <input type="number" min="0" max="150" value="0" id="input${productoExistente.id}">
+                    <input class="inputKilos" type="number" min="0" max="150" value="0" id="input${productoExistente.id}">
                     <button class="boton-suma" id="botonSumar${productoExistente.id}">+</button>
                 </div>
                 <a class="btn btn-primary botonComprar" id="botonAgregar${productoExistente.id}">Añadir al carrito</a>

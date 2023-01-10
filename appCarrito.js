@@ -37,7 +37,9 @@ const renderizarCarrito = () => {
       //creo una div que va a contener el titulo del carrito
       const nombreProducto = document.createElement('div')
       nombreProducto.classList.add('fw-bold', 'divProductoCarrito')
-      nombreProducto.innerText = `Café ${carritoProducto.nombre} - Cantidad: ${carritoProducto.kilo} - Precio: $${carritoProducto.kilo * carritoProducto.precio}`
+      nombreProducto.innerHTML = `Café ${carritoProducto.nombre} - Cantidad: ${carritoProducto.kilo} - Precio: $${carritoProducto.kilo * carritoProducto.precio}
+      <button id="botonEliminar${carritoProducto.id}">X</button>
+      `
 
 
       divItemCarrito.appendChild(nombreProducto)
@@ -45,6 +47,11 @@ const renderizarCarrito = () => {
       containerProductosDelCarrito.appendChild(itemEnCarrito)
 
     })
+
+    /*const botonEliminar = document.getElementById(`botonEliminar${carritoProducto.id}`);
+    botonEliminar.addEventListener("click", () => {
+      eliminarProducto(carritoProducto.id);
+    })*/
 
     const importeAPagar = document.createElement('li')
     importeAPagar.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start')
