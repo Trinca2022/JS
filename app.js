@@ -1,5 +1,4 @@
 // Busco con fetch el json
-
 const consultarProductos = async () => {
 
     const datos = await fetch('./Productos/productos.json')
@@ -8,25 +7,22 @@ const consultarProductos = async () => {
     return productosExistentes
 }
 
+//Genero una función con async await. Cuando ejecuta, guarda los productos del fetch en array productosExistentes
 async function main() {
     let productosExistentes = await consultarProductos()
 
-
-
     let carritoDeProductos = []
-
 
     // Si el carrito ya tiene articulos en localStorage, los mantiene
     if (localStorage.getItem('carrito') !== null) {
         carritoDeProductos = JSON.parse(localStorage.getItem("carrito"))
     }
 
+    //Traigo del DOM el div que aloja las cards
     const listaProductos = document.getElementById("listaProductosIndex");
 
-
     const mostrarProductos = () => {
-
-
+        //Para cada producto existente genera una card
         productosExistentes.forEach(productoExistente => {
             const card = document.createElement("div");
             card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
@@ -39,21 +35,20 @@ async function main() {
                 <p class="card-text">Este café tiene una intensidad ${productoExistente.intensidad} y cuesta $${productoExistente.precio} el Kilo </p>
                 <div class="suma-resta">
                     <button class="boton-resta" id="botonRestar${productoExistente.id}">-</button>
-                    <input class="inputKilos" type="number" min="0" max="150" value="0" id="input${productoExistente.id}">
+                    <input class="inputKilos" type="number" min="1" max="150" value="1" id="inputKilos${productoExistente.id}">
                     <button class="boton-suma" id="botonSumar${productoExistente.id}">+</button>
                 </div>
                 <a class="btn btn-primary botonComprar" id="botonAgregar${productoExistente.id}">Añadir al carrito</a>
             </div>
             </div>
-                             `
+            `
             listaProductos.appendChild(card);
 
+            //Genero evento para botón AÑADIR AL CARRITO
 
-
-
-            //Genero evento para botón AGREGAR AL CARRITO
+            //Traigo del DOM con id dinámico
             const botonAgregar = document.getElementById(`botonAgregar${productoExistente.id}`);
-            const inputKilos = document.getElementById(`input${productoExistente.id}`)
+            const inputKilos = document.getElementById(`inputKilos${productoExistente.id}`)
 
             botonAgregar.addEventListener("click", () => {
                 agregarAlCarrito(productoExistente.id, Number(inputKilos.value));
@@ -68,13 +63,15 @@ async function main() {
                         background: "white",
                         color: "black"
                     },
-                    onClick: function () { } // Callback after click
+                    onClick: function () { }
                 }).showToast();
             })
 
-            //TRAIGO DEL DOM LOS BOTONES DEL INPUT
+            //TRAIGO DEL DOM LOS BOTONES DEL INPUT CON ID DINÁMICO
             const botonSumar = document.getElementById(`botonSumar${productoExistente.id}`)
             const botonRestar = document.getElementById(`botonRestar${productoExistente.id}`)
+
+            //EVENTOS PARA BOTONES + Y -
 
             botonSumar.addEventListener("click", () => {
                 let valorInput = Number(inputKilos.value)
@@ -85,7 +82,7 @@ async function main() {
             botonRestar.addEventListener("click", () => {
                 let valorInput = Number(inputKilos.value)
                 valorInput--
-                inputKilos.value = Math.max(0, valorInput).toString()
+                inputKilos.value = Math.max(1, valorInput).toString()
             })
 
 
@@ -94,32 +91,26 @@ async function main() {
     }
 
 
-
-
     //Agrega al carrito
     const agregarAlCarrito = (id, cantidad) => {
         //Busca en el el carrito un producto cuyo id es igual al parámetro id. Si lo encuentra, lo guarda en productoListo
         const productoListo = carritoDeProductos.find(producto => producto.id === id)
         // si productoListo existe
         if (productoListo) {
-            //localStorage.setItem("carrito", JSON.stringify(carritoDeProductos));
             //agrega al producto que encontré 1 kilo más
-            //productoListo.kilo = cantidadInput.value;
             productoListo.kilo += cantidad;
             // no encontró el id del producto en el array: carritoDeProductos    
         } else {
-
-
             // busco dentro de los productos existentes el producto que tenga ese ID 
             const productoAgregado = productosExistentes.find(producto => producto.id === id);
-
+            //Guardo en la propiedad kilos el valor de cantidad
             productoAgregado.kilo = cantidad
             // agrego el objeto encontrado (el producto con el id que quería) en el array carritoDeProductos
             carritoDeProductos.push(productoAgregado)
 
         }
 
-
+        //Creo un importe de compra total según la cantidad de productos en mi carrito de productos y según su precio
         let importeDeCompra = 0;
         carritoDeProductos.forEach(producto => {
             importeDeCompra += producto.precio * producto.kilo;
@@ -131,7 +122,6 @@ async function main() {
     }
 
     mostrarProductos();
-
 
 }
 

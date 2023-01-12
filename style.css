@@ -141,7 +141,7 @@ ul a:hover,
 
 .inputKilos {
     text-align: center;
-    /*margin-bottom: 10px;*/
+
 }
 
 /*ELIMINO BOTONES FLECHA DEL INPUT NUMBER*/
@@ -180,7 +180,6 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 
-
 .contenedorBotones {
     margin-top: 2%;
     width: 50%;
@@ -190,6 +189,16 @@ input[type=number]::-webkit-inner-spin-button {
 
 .divProductoCarrito {
     text-align: center;
+}
+
+.botonEliminarProducto {
+    background-color: white;
+    margin-left: 15px;
+}
+
+.textoCarritoVacio {
+    font-size: 50px;
+    color: white;
 }
 
 /*FOOTER*/
