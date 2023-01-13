@@ -126,6 +126,8 @@ const eliminarProducto = (id) => {
     containerProductosDelCarrito.removeChild(liImporte);
     //AVISO DE CARRITO VACÍO
     vaciarCarrito();
+    formularioFinalizarCompra = document.getElementById(`idFormularioCompra`)
+    formularioFinalizarCompra.innerText = ``
   }
 
 }
@@ -157,12 +159,45 @@ botonFinalizar.addEventListener("click", () => {
     })
   }
   else {
-    Swal.fire({
-      title: 'Gracias por tu compra, ¡hasta la próxima!',
-      showConfirmButton: false,
-      timer: 1500
+    mainContainerPaginas = document.getElementById(`idMainContainerPaginas`)
+    mainContainerPaginas.setAttribute("class", "mainContainerPaginasNuevo")
+    location.href = `carrito.html#idFormularioCompra`
+    formularioFinalizarCompra = document.getElementById(`idFormularioCompra`)
+    formularioFinalizarCompra.innerHTML = ` <form>
+    <h1>FINALIZACIÓN DE COMPRA</h1>
+    <label class="inline" for="nombre">Nombre y apellido</label>
+    <input id="nombre" type="text" />
+    <label for="telefono">Teléfono</label>
+    <input id="telefono" type="text" />
+    <label for="mail">Mail</label>
+    <input id="mail" type="email" placeholder="ejemplo@gmail.com" />
+    <label for="tarjetaNro">Número de tarjeta</label>
+    <input id="tarjetaNro" type="text" />
+    <label for="tarjetaNombre">Nombre de la persona que figura en la tarjeta</label>
+    <input id="tarjetaNombre" type="text" />
+    <label for="tarjetaFecha">Fecha de expiración</label>
+    <input id="tarjetaFecha" type="text" />
+    <label for="tarjetaCod">Código de seguridad</label>
+    <input id="tarjetaCod" type="text" />
+    <label for="tarjetaDNI">DNI de la persona que figura en la tarjeta</label>
+    <input id="tarjetaDNI" type="text" />
+</form>
+
+<button id="botonPagar" class="botonPagar">Pagar</button>`
+
+    botonPagar = document.getElementById(`botonPagar`)
+    botonPagar.addEventListener("click", () => {
+      Swal.fire({
+        title: 'Gracias por tu compra, ¡hasta la próxima!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      vaciarCarrito();
+      formularioFinalizarCompra = document.getElementById(`idFormularioCompra`)
+      formularioFinalizarCompra.innerText = ``
+
     })
-    vaciarCarrito();
+
   }
 })
 
